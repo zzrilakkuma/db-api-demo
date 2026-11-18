@@ -2,6 +2,9 @@
 
 按按鈕 → API → SQL → 資料庫 → 回傳 JSON，一步一步顯示在畫面上。只用 Python 內建套件。
 
+**線上版（不用安裝）：https://zzrilakkuma.github.io/db-api-demo/**
+線上版的資料庫跑在每個人自己的瀏覽器裡（sql.js），互不影響，重新整理就還原。線上版沒有真的伺服器，Postman 打不到；要用 Postman 請在本機跑 `app.py`。
+
 ## 啟動
 ```
 cd ~/db-api-demo
@@ -28,6 +31,7 @@ python3 app.py --lan     # 同一個 Wi-Fi 的學員可以用 Postman 打你的 
 ## 檔案
 - `app.py`：API／後端，約 280 行，每個 API 都有中文註解
 - `index.html`：前端畫面
+- `browser-api.js`：線上版用，在瀏覽器裡模擬和 `app.py` 一樣的 API 與 SQL
 - `schema.sql`：和講義相同的建表與練習資料
 
 ## 公開給學員連（Cloudflare 臨時通道）

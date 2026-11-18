@@ -228,6 +228,10 @@ class Handler(BaseHTTPRequestHandler):
         url = urlparse(self.path)
         if method == "GET" and url.path in ("/", "/index.html"):
             return self._send(200, (HERE / "index.html").read_bytes(), "text/html; charset=utf-8")
+        static = {"/browser-api.js": "application/javascript; charset=utf-8",
+                  "/schema.sql": "text/plain; charset=utf-8"}
+        if method == "GET" and url.path in static:
+            return self._send(200, (HERE / url.path[1:]).read_bytes(), static[url.path])
         if not url.path.startswith("/api/"):
             return self._send(404, {"ok": False, "message": "找不到"})
 

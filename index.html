@@ -143,6 +143,7 @@
   </section>
 </main>
 
+<script src="browser-api.js"></script>
 <script>
 const v = id => document.getElementById(id).value;
 const c = id => document.getElementById(id).checked;
@@ -168,7 +169,9 @@ async function call(method, url, body) {
                              body: body ? JSON.stringify(body) : undefined });
     json = await res.json();
   } catch (e) {
-    const hint = location.protocol === 'file:'
+    const hint = window.BROWSER_MODE
+      ? '瀏覽器裡的資料庫（sql.js）載入失敗，請確認網路連線後重新整理。'
+      : location.protocol === 'file:'
       ? '你是直接雙擊打開 index.html 的。請先在終端機執行 python3 app.py，再用瀏覽器打開 http://localhost:8765'
       : '連不到後端。請確認終端機裡的 python3 app.py 還在執行（沒有被 Ctrl+C 停掉），然後重新整理這一頁。';
     $('msg').innerHTML = `<div class="msg bad">送不出去：${esc(hint)}</div>`;
