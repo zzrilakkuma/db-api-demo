@@ -1,0 +1,4 @@
+demo.db
+__pycache__/
+.playwright-mcp/
+.DS_Store
